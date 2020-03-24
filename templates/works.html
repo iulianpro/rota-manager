@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rota Manager</title>
+</head>
+<body>
+    {% for work in works %}
+            {{work.shift_type}}
+            {{work.emploee_name}}
+            {{work.work_date}}
+        {% endfor %}
+</body>
+</html>

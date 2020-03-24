@@ -2,3 +2,4 @@
 .vscode
 .pylintrc
 __pycache__
+env.py
