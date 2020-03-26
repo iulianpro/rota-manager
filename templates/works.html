@@ -1,15 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rota Manager</title>
-</head>
-<body>
+{% extends 'base.html'%} {% block content %}
+
+<header>
+    <h4 class="display-5 mb-4 mt-4 text-center">June 2020</h4>
+    <div class="row d-none d-sm-flex p-1 bg-dark text-white">
+        <h5 class="col-sm p-1">Monday</h5>
+        <h5 class="col-sm p-1">Tuesday</h5>
+        <h5 class="col-sm p-1">Wednesday</h5>
+        <h5 class="col-sm p-1">Thursday</h5>
+        <h5 class="col-sm p-1">Friday</h5>
+        <h5 class="col-sm p-1">Saturday</h5>
+        <h5 class="col-sm p-1">Sunday</h5>
+    </div>
+</header>
+
+<div class="row border border-right-0 border-bottom-0">
     {% for work in works %}
-            {{work.shift_type}}
-            {{work.emploee_name}}
-            {{work.work_date}}
-        {% endfor %}
-</body>
-</html>
+        <div class="day col-sm p-2 border border-left-0 border-top-0 text-truncate">
+            <h5 class="row align-items-center">
+                <span class="date col-1">{{loop.index}}</span>
+                <small class="col d-sm-none text-center text-muted">Tuesday</small>
+                <span class="col-1"></span>
+            </h5>
+            {% include 'components/day.html' %}
+        </div>
+        {% if loop.index % 7 == 0 %}
+            <div class="w-100"></div>
+        {% endif %}
+    {% endfor %}
+</div>
+
+{% endblock %}
