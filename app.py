@@ -21,6 +21,18 @@ def get_works():
     return render_template("works.html", works=mongo.db.works.find())
 
 
+@app.route('/add_work')
+def add_work():
+    return render_template('addwork.html', dates=mongo.db.dates.find(), emploees=mongo.db.emploees.find())
+
+
+@app.route('/insert_work', methods=['POST'])
+def insert_work():
+    works = mongo.db.works
+    works.insert_one(request.form.to_dict())
+    return redirect(url_for('get_works'))
+
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
